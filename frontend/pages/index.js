@@ -25,12 +25,12 @@ export default function Home() {
       <Header />
       {isLoggedIn ? (
         <main className={styles.main}>
-          <h1 className={styles.title} style={{ marginBottom: "4rem" }}>
+          <h1 className={styles.title} style={{ marginBottom: "2%" }}>
             Connect Wallet and Display NFTs
           </h1>
           {connectors.map((connector) => (
             <button
-              className="metamask"
+              className="metamask metamaskc"
               disabled={!connector.ready}
               key={connector.id}
               onClick={() => connect({ connector })}

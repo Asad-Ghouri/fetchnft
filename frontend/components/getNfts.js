@@ -16,7 +16,7 @@ export default function getNfts() {
     let response;
     async function getData() {
       response = await axios
-        .get(`http://localhost:5001/getnfts`, {
+        .get(`https://fetchnft-1--asadghouri.repl.co/getnfts`, {
           params: { address, chain },
         })
         .then((response) => {

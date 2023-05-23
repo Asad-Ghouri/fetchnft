@@ -9,6 +9,9 @@ export default function getNfts() {
   const { address } = useAccount();
   const chain = "0x89";
 
+  console.log("nfts are")
+  console.log(nfts)
+
   useEffect(() => {
     let response;
     async function getData() {
@@ -19,22 +22,30 @@ export default function getNfts() {
         .then((response) => {
           setNfts(response.data.result);
           console.log("ids are ");
-          console.log(response.data.result[0].token_id);
-          console.log(response);
+          // console.log(response.data.result[0].token_id);
+          // console.log(response);
         });
     }
     getData();
   }, []);
 
   return (
-    <section className={styles.dataContainer}>
-      {nfts.map((nft) => {
-        return (
-          nft.metadata && (
-            <Card uri={nft} id={nft.token_id} key={nft.token_uri} />
-          )
-        );
-      })}
-    </section>
+    <>
+      {
+        nfts.length > 0 ?
+          <section className={styles.dataContainer}>
+            {nfts.map((nft) => {
+              return (
+                nft.metadata && (
+                  <Card uri={nft} id={nft.token_id} key={nft.token_uri} />
+                )
+              );
+            })}
+          </section>
+          :
+          <h3>You do not have any nft</h3>
+      }
+
+    </>
   );
 }

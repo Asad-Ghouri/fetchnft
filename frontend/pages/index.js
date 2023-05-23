@@ -36,9 +36,9 @@ export default function Home() {
               onClick={() => connect({ connector })}
             >
               {connector.name}
-              {connector.ready && " (unsupported)"}
+              {!connector.ready && " (unsupported)"}
               {isLoading &&
-                connector.id != pendingConnector?.id &&
+                connector.id === pendingConnector?.id &&
                 " (connecting)"}
             </button>
           ))}
